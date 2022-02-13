@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 const restaurants = require('./models/restaurants')
 const e = require('express')
+const { render } = require('express/lib/response')
 const app = express()
 
 const port = 3000
@@ -55,6 +56,19 @@ app.get('/restaurants/:id', (req, res) => {
   restaurants.findById(id)
     .lean()
     .then(restaurant => res.render('detail', { restaurant }))
+    .catch(error => {
+      console.log(error)
+      res.render('error_page', { status: 500, error: error.message })
+    })
+})
+
+app.get('/search', (req, res) => {
+  const keyword = req.query.keyword.replace('/\s+/g', '')
+  const regexp = new RegExp(keyword, 'i')
+
+  restaurants.find({ $or: [{ 'name': regexp }, { 'name_en': regexp }, { 'category': regexp }] })
+    .lean()
+    .then(restaurant => res.render('index', { restaurant, keyword }))
     .catch(error => {
       console.log(error)
       res.render('error_page', { status: 500, error: error.message })
