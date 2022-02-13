@@ -61,6 +61,36 @@ app.get('/restaurants/:id', (req, res) => {
     })
 })
 
+app.get('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  restaurants.findById(id)
+    .lean()
+    .then(restaurant => res.render('edit', { restaurant }))
+    .catch(error => {
+      console.log(error)
+      res.render('error_page', { status: 500, error: error.message })
+    })
+})
+
+app.put('/restaurants/:id', (req, res) => {
+  const id = req.params.id
+  const { name, category, location, phone, rating } = req.body
+  const type = {
+    NAME: 'string',
+    CATEGORY: 'string',
+    LOCATION: 'string',
+    PHONE: 'number',
+    RATING: 'number'
+  }
+  if (typeof name === type.NAME && typeof category === type.CATEGORY && typeof location === type.LOCATION && typeof Number(phone) === type.PHONE && typeof Number(rating) === type.RATING) {
+    restaurants.findByIdAndUpdate(id, req.body)
+      .then(() => res.redirect(`/restaurants/${id}`))
+      .catch(error => console.log(error))
+  } else {
+    const error = 'Please check your format again'
+    res.render('errorPage', { status: 500, error })
+  }
+})
 
 app.listen(port, () => {
   console.log(`App is listening on http://localhost/${port}`)
