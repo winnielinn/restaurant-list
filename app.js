@@ -1,6 +1,7 @@
 const express = require('express')
 const exphbs = require('express-handlebars').create({ defaultLayout: 'main', extname: '.hbs' })
 const mongoose = require('mongoose')
+const methodOverride = require('method-override')
 const restaurants = require('./models/restaurants')
 const app = express()
 
@@ -14,7 +15,29 @@ db.once('open', () => console.log('mongoDB connection!'))
 
 app.engine('hbs', exphbs.engine)
 app.set('view engine', 'hbs')
+app.use(methodOverride('_method'))
+app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
+
+app.get('/restaurants/new', (req, res) => {
+  res.render('new')
+})
+
+app.post('/restaurants', (req, res) => {
+  const { name, category, location, phone, rating } = req.body
+  const type = {
+    NAME: 'string',
+    CATEGORY: 'string',
+    LOCATION: 'string',
+    PHONE: 'number',
+    RATING: 'number'
+  }
+  if (typeof name === type.NAME && typeof category === type.CATEGORY && typeof location === type.LOCATION && typeof Number(phone) === type.PHONE && typeof Number(rating) === type.RATING) {
+    restaurants.create(req.body)
+      .then(() => res.redirect('/'))
+      .catch(error => console.log(error))
+  }
+})
 
 app.get('/', (req, res) => {
   restaurants.find({})
@@ -25,11 +48,12 @@ app.get('/', (req, res) => {
 
 app.get('/restaurants/:id', (req, res) => {
   const id = req.params.id
-  restaurants.findById(id) 
+  restaurants.findById(id)
     .lean()
     .then(restaurant => res.render('detail', { restaurant }))
     .catch(error => console.log(error))
 })
+
 
 app.listen(port, () => {
   console.log(`App is listening on http://localhost/${port}`)
