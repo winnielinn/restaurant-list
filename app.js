@@ -1,7 +1,7 @@
 const express = require('express')
 const exphbs = require('express-handlebars').create({ defaultLayout: 'main', extname: '.hbs' })
 const mongoose = require('mongoose')
-const restaurants = require('./restaurant.json').results
+const restaurants = require('./models/restaurants')
 const app = express()
 
 const port = 3000
@@ -17,7 +17,18 @@ app.set('view engine', 'hbs')
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-  res.render('index', { restaurants })
+  restaurants.find({})
+    .lean()
+    .then(restaurant => res.render('index', { restaurant }))
+    .catch(error => console.log(error))
+})
+
+app.get('/restaurants/:id', (req, res) => {
+  const id = req.params.id
+  restaurants.findById(id) 
+    .lean()
+    .then(restaurant => res.render('detail', { restaurant }))
+    .catch(error => console.log(error))
 })
 
 app.listen(port, () => {
