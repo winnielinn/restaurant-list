@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars').create({ defaultLayout: 'main', ext
 const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 const restaurants = require('./models/restaurants')
+const e = require('express')
 const app = express()
 
 const port = 3000
@@ -36,6 +37,9 @@ app.post('/restaurants', (req, res) => {
     restaurants.create(req.body)
       .then(() => res.redirect('/'))
       .catch(error => console.log(error))
+  } else {
+    const error = 'Please check your format again'
+    res.render('errorPage', { status: 500, error })
   }
 })
 
@@ -51,7 +55,10 @@ app.get('/restaurants/:id', (req, res) => {
   restaurants.findById(id)
     .lean()
     .then(restaurant => res.render('detail', { restaurant }))
-    .catch(error => console.log(error))
+    .catch(error => {
+      console.log(error)
+      res.render('error_page', { status: 500, error: error.message })
+    })
 })
 
 
