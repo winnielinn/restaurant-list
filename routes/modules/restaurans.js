@@ -1,5 +1,5 @@
 const express = require('express')
-const restaurants = require('../../models/restaurants')
+const Restaurant = require('../../models/Restaurant')
 const router = express.Router()
 
 router.get('/new', (req, res) => {
@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
     RATING: 'number'
   }
   if (typeof name === type.NAME && typeof category === type.CATEGORY && typeof location === type.LOCATION && typeof Number(phone) === type.PHONE && typeof Number(rating) === type.RATING) {
-    restaurants.create(req.body)
+    Restaurant.create(req.body)
       .then(() => res.redirect('/'))
       .catch(error => console.log(error))
   } else {
@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   const id = req.params.id
-  restaurants.findById(id)
+  Restaurant.findById(id)
     .lean()
     .then(restaurant => res.render('detail', { restaurant }))
     .catch(error => {
@@ -38,7 +38,7 @@ router.get('/:id', (req, res) => {
 
 router.get('/:id/edit', (req, res) => {
   const id = req.params.id
-  restaurants.findById(id)
+  Restaurant.findById(id)
     .lean()
     .then(restaurant => res.render('edit', { restaurant }))
     .catch(error => {
@@ -58,7 +58,7 @@ router.put('/:id', (req, res) => {
     RATING: 'number'
   }
   if (typeof name === type.NAME && typeof category === type.CATEGORY && typeof location === type.LOCATION && typeof Number(phone) === type.PHONE && typeof Number(rating) === type.RATING) {
-    restaurants.findByIdAndUpdate(id, req.body)
+    Restaurant.findByIdAndUpdate(id, req.body)
       .then(() => res.redirect(`/restaurants/${id}`))
       .catch(error => console.log(error))
   } else {
@@ -69,7 +69,7 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   const id = req.params.id
-  restaurants.findByIdAndDelete(id)
+  Restaurant.findByIdAndDelete(id)
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })

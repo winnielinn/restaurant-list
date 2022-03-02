@@ -1,5 +1,3 @@
-const restaurants = require('./models/restaurants')
-
 function sortFilter(filter) {
   const sortData = {
     NAME_ASC: 'A-Z',
