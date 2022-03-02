@@ -1,6 +1,7 @@
 # **Foodiescanner**
 
 *Find your destiny restaurant*
+![GITHUB](https://raw.githubusercontent.com/winnielinn/restaurant-list/main/public/cover.png "Cover")
 Foodiescanner is web app built with Node.js + Express that allow you can create/delete/update/search/check information in the restaurant list.
 
 ## **Features**
