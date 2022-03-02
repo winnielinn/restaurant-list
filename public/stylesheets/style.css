@@ -35,6 +35,18 @@ header {
   color: #9b4b4b;
 }
 
+.login {
+  margin-top: -180px;
+}
+
+.login-card {
+  margin: 0 auto 50px auto;
+  padding: 20px 30px;
+  width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
 .form-control::placeholder {
   color: #aaaaaa;
   font-size: 0.8rem;
