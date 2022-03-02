@@ -40,7 +40,7 @@ header {
   font-size: 0.8rem;
 }
 
-.btn-major {
+.btn-major, .sort-btn  {
   background-color: #9b4b4b;
   color: white;
 }
@@ -79,7 +79,6 @@ header {
 }
 
 @media screen and (max-width: 992px) {
-  
   .card img{
     height: 115px;
   }

@@ -2,19 +2,48 @@
 <div class="container search-bar">
   <div class="search-bar-outer">
     <div class="search-bar-inner">
-      <form action="/search">
-        <h4 class="mb-2">尋找餐廳：</h4>
-        <div class="input-group">
-          <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
-            value="{{ keyword }}" aria-describedby="search-button">
-          <div class="input-group-append">
-            <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+      <div class="d-flex justify-content-between">
+        <div class="col-10">
+          <form action="/search">
+            <h4 class="mb-2">尋找餐廳：</h4>
+            <div class="input-group">
+              <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、選擇分類"
+                aria-label="Restaurant Name..." value="{{ keyword }}" aria-describedby="search-button">
+              <div class="input-group-append">
+                <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="row" style="margin-top: 37px;">
+          <div class="input-group">
+            <form action="/" class="dropdown sort-form">
+              <button class="btn sort-btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+                aria-expanded="false">
+                {{#if sort}}
+                <i class="fas fa-sort sort"></i> {{ sort }}
+                {{else}}
+                <i class="fas fa-sort sort"></i> Sort
+                {{/if}}
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button name="sort" class="dropdown-item" type="submit" value="A-Z"><i
+                    class="fas fa-sort-alpha-down sort"></i> A-Z</button>
+                <button name="sort" class="dropdown-item" type="submit" value="Z-A"><i class="fas fa-sort-alpha-up"></i>
+                  Z-A</button>
+                <button name="sort" class="dropdown-item" type="submit" value="category"><i
+                    class="fas fa-sort-amount-down sort"></i> Category</button>
+                <button name="sort" class="dropdown-item" type="submit" value="location"><i
+                    class="fas fa-sort-amount-down sort"></i> Location</button>
+              </div>
+            </form>
           </div>
         </div>
-      </form>
+      </div>
     </div>
   </div>
 </div>
+
 
 
 <!-- restaurant list -->
