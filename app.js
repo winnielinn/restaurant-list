@@ -19,6 +19,7 @@ app.use(session({
   resave: true,
   saveUninitialized: false,
 }))
+app.use(express.json())
 usePassport(app)
 app.use(routes)
 

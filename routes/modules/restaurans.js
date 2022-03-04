@@ -8,6 +8,8 @@ router.get('/new', (req, res) => {
 
 router.post('/', (req, res) => {
   const { name, category, location, phone, rating } = req.body
+  req.body['userId']  = req.user._id
+
   const type = {
     NAME: 'string',
     CATEGORY: 'string',
@@ -15,6 +17,7 @@ router.post('/', (req, res) => {
     PHONE: 'number',
     RATING: 'number'
   }
+
   if (typeof name === type.NAME && typeof category === type.CATEGORY && typeof location === type.LOCATION && typeof Number(phone) === type.PHONE && typeof Number(rating) === type.RATING) {
     Restaurant.create(req.body)
       .then(() => res.redirect('/'))
@@ -26,8 +29,10 @@ router.post('/', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-  const id = req.params.id
-  Restaurant.findById(id)
+  const _id = req.params.id
+  const userId = req.user._id
+
+  Restaurant.findOne({ _id, userId })
     .lean()
     .then(restaurant => res.render('detail', { restaurant }))
     .catch(error => {
@@ -37,8 +42,10 @@ router.get('/:id', (req, res) => {
 })
 
 router.get('/:id/edit', (req, res) => {
-  const id = req.params.id
-  Restaurant.findById(id)
+  const _id = req.params.id
+  const userId = req.user._id
+
+  Restaurant.findOne({ _id, userId })
     .lean()
     .then(restaurant => res.render('edit', { restaurant }))
     .catch(error => {
@@ -48,8 +55,10 @@ router.get('/:id/edit', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
-  const id = req.params.id
   const { name, category, location, phone, rating } = req.body
+  req.body['userId'] = req.user._id
+  const id = req.params.id
+
   const type = {
     NAME: 'string',
     CATEGORY: 'string',
@@ -68,8 +77,11 @@ router.put('/:id', (req, res) => {
 })
 
 router.delete('/:id', (req, res) => {
-  const id = req.params.id
-  Restaurant.findByIdAndDelete(id)
+  const _id = req.params.id
+  const userId = req.user._id
+
+  Restaurant.findOne({ _id, userId })
+    .then(restaurant => restaurant.remove())
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
