@@ -20,11 +20,17 @@
       <div class="container">
         <a class="navbar-brand" href="/">
           <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
-            width="30" height="30" class="d-inline-block align-top" alt="我的餐廳清單">
-          Foodiescanner
+            width="30" height="30" class="d-inline-block align-top" alt="Foodiescanner">
+          {{#if isAuthenticated}} {{user.name}}'s {{/if}} Foodiescanner
         </a>
-        <a href="/restaurants/new"><span style="color:#9b4b4b">新增餐廳</span> <i class="fas fa-plus-square"
-            style="color:#9b4b4b"></i></a>
+        {{#if isAuthenticated}}
+        <div class="d-flex">
+          <a href="/restaurants/new" class="btn mr-2" style="border-color: #9b4b4b; color: #9b4b4b">新增餐廳</a>
+          <a href="/users/logout" class="btn" style="border-color: #4592af; color: #4592af">Logout</a>
+        </div>
+        {{else}}
+        <a href="/users/login" class="btn btn-outline" style="border-color: #4592af; color: #4592af">Login</a>
+        {{/if}}
       </div>
     </nav>
     <div class="banner"></div>
