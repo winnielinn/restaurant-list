@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars').create({ defaultLayout: 'main', ext
 const methodOverride = require('method-override')
 const session = require('express-session')
 const flash = require('connect-flash')
+const bcrypt = require('bcryptjs')
 
 const routes = require('./routes')
 const usePassport = require('./config/passport')
