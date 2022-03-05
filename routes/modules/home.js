@@ -22,7 +22,7 @@ router.get('/search', (req, res) => {
 
   Restaurant.find({ $or: [{ 'name': regexp }, { 'name_en': regexp }, { 'category': regexp }], userId })
     .lean()
-    .then(restaurant => res.render('index', { restaurant, keyword }))
+    .then(restaurant => res.render('search', { restaurant, keyword }))
     .catch(error => {
       console.log(error)
       res.render('error_page', { status: 500, error: error.message })
