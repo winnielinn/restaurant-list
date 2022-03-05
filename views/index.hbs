@@ -44,10 +44,13 @@
   </div>
 </div>
 
-
-
 <!-- restaurant list -->
 <div class="container mt-5">
+  {{#if keyword}}
+  <div class="alert alert-warning container mt-5" role="alert">
+    關鍵字 <strong>{{ keyword }}</strong> 查無相關餐廳，請重新搜尋一次。
+  </div>
+  {{/if}}
   {{#if restaurant}}
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
