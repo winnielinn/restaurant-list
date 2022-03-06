@@ -4,14 +4,14 @@
       <div class="card card-body login-card">
         <h1 class="text-center mt-3">Login</h1>
         {{> message}}
-        <form action="/users/login" method="POST">
+        <form action="/users/login" class="needs-validation" method="POST" novalidate>
           <div class="form-group mt-2">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email">
+            <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email" required>
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password">
+            <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" required>
           </div>
           <button type="submit" class="btn mt-4 btn-block" style="background-color: #9b4b4b; color: white;">Login</button>
         </form>

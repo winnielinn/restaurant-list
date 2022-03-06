@@ -2,13 +2,11 @@
 
 <div class="container">
   <div class="row m-5">
-    <form class="container-fluid needs-validation" action="/restaurants" method="POST" id="form">
+    <form class="container-fluid needs-validation" action="/restaurants" method="POST" id="form" novalidate>
       <div class="col-12">
         <label for="restaurant-name" class="form-label"><span style="color: #e83e8c;">*</span>店名 <i
             class="fas fa-utensils"></i></label>
         <input type="text" class="form-control" id="restaurant-name" placeholder="艾朋牛排餐酒館" name="name" required>
-        <div class="valid-feedback"></div>
-        <div class="invalid-feedback"></div>
       </div>
       <div class="col-12 mt-3">
         <label for="restaurant-name_en" class="form-label">英文店名 <i class="fas fa-file-signature"></i></label>
@@ -27,24 +25,21 @@
           <option>酒吧</option>
           <option>咖啡</option>
         </datalist>
-        <div class="valid-feedback"></div>
-        <div class="invalid-feedback"></div>
       </div>
       <div class="col-12 mt-3">
         <label for="restaurant-location" class="form-label"><span style="color: #e83e8c;">*</span> 地址 <i
             class="fas fa-map-marker-alt pr-2"></i></label>
         <input type="text" class="form-control" id="restaurant-location" placeholder="台北市信義區忠孝東路五段 139 號 2 樓"
           name="location" required>
-        <div class="valid-feedback"></div>
-        <div class="invalid-feedback"></div>
       </div>
       <div class="col-12 mt-3">
         <label for="restaurant-phone" class="form-label"><span style="color: #e83e8c;">*</span> 電話 <i
             class="fas fa-mobile-alt pr-2"></i></label>
         <input type="number" class="form-control" id="restaurant-phone" placeholder="02 2756 7788" name="phone"
           inputmode="numeric" required>
-        <div class="valid-feedback"></div>
-        <div class="invalid-feedback"></div>
+        <div class="invalid-feedback">
+          Please only input number.
+        </div>
       </div>
       <div class="col-12 mt-3">
         <label for="restaurant-description" class="form-label" rows="3" cols="20">更多資訊 <i
@@ -66,8 +61,9 @@
             class="far fa-star"></i></label>
         <input type="number" step="0.1" min="0" max="5" class="form-control" id="restaurant-rating" placeholder="0 ~ 5"
           name="rating" inputmode="numeric" required>
-        <div class="valid-feedback"></div>
-        <div class="invalid-feedback"></div>
+        <div class="invalid-feedback">
+          Please input number from 1 to 5.
+        </div>
       </div>
       <div class="col-12 mt-5">
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
