@@ -5,10 +5,14 @@ const session = require('express-session')
 const flash = require('connect-flash')
 const bcrypt = require('bcryptjs')
 
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 const routes = require('./routes')
 const usePassport = require('./config/passport')
 const app = express()
-const port = 3000
+const port = process.env.PORT
 require('./config/mongoose')
 
 app.engine('hbs', exphbs.engine)
@@ -19,7 +23,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
 app.use(session({
-  secret: 'secretCode',
+  secret: process.env.SESSION_SECRET,
   resave: true,
   saveUninitialized: false,
 }))
