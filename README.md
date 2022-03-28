@@ -1,22 +1,21 @@
 # **Foodiescanner**
 
-*Find your destiny restaurant*
-![GITHUB](https://raw.githubusercontent.com/winnielinn/restaurant-list/main/public/cover.png "Cover")
-Foodiescanner is web app built with Node.js + Express that allow you can create/delete/update/search/check information in the restaurant list.
+*Create your restaurant list*
+![GITHUB](https://raw.githubusercontent.com/winnielinn/restaurant-list/main/public/login_page.png "login_page")
+![GITHUB](https://raw.githubusercontent.com/winnielinn/restaurant-list/main/public/home_page.png "home_page")
+Foodiescanner built with Node.js + Express that allow user manage your restaurant list.
 
 ## **Features**
 
-* Check all restaurants including location and information.
+* Find information of all restaurants.
 
-* Use keyword to search restaurant.
+* Search restaurants by using keyword or sort filter.
 
-* Create your favorite restaurans.
+* Create your favorite restaurants.
 
-* Update information of restauransts.
+* Update information of restaurants.
 
-* Delete restaurans you don't like.
-
-* Use sort filter to find resaurant faster.
+* Delete restaurants you don't like.
 
 ## **Getting Start**
 
@@ -28,71 +27,48 @@ Foodiescanner is web app built with Node.js + Express that allow you can create/
 
 ### **Installing**
 
-1. Check requirement for environment setup.
-
-2. Open your terminal and use 'git clone' to copy this project to local.
+1. Open your terminal and use 'git clone' to copy this project to local.
 
 ```
 git clone https://github.com/winnielinn/restaurant-list.git
 ```
 
-3. Connect MongoDB server.
-
-```
-cd ~/mongodb/bin/
-```
-
-```
-./mongod --dbpath /Users/[Users'name]/mongodb-data
-```
-
-4. Change directory to the project.
+2. Change directory to the project.
 
 ```
 cd restaurant-list
 ```
 
-5. Install all dependencies.
+3. Install all dependencies.
 
 ```
 npm install
 ```
 
-6. Install nodemon package.
+4. Install nodemon package.
 
 ```
 npm install -g nodemon 
 ```
 
-7. Run seed data.
+5. Run seed data. Once seed data created, terminal will show `Seed data created!` twice owing to two faker users.
 
 ```
 npm run seed
 ```
 
-8. Run server in localhost using following npm script.
+6. Run server in localhost by using following npm script.
 
 ```
 npm run dev
 ```
 
-9. If successful, `App is listening on http://localhost/3000` will show in your terminal and you could open this URL to use web app.
+7. If successful, `App is listening on http://localhost/3000` will show in terminal.
 
-## **Devtools**
+8. Please refer `.env.example` to check which environment varible you need for full web app experience. Following API service you'll need:
 
-* Node.js 14.16.0
-
-* Express 4.17.2
-
-* Express-Handlebars 6.0.2
-
-* Bootstrap 4.3.1
-
-* Font-awesome 5.8.1
-
-* method-override mongoose 6.2.1
-
-* 3.0.0
+* [Meta for Developers](https://developers.facebook.com/)
+* [Google OAuth 2.0 Login](https://console.developers.google.com/)
 
 ## **Contributor**
 
