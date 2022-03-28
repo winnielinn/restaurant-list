@@ -10,7 +10,6 @@ const restaurantSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    required: true
   },
   image: {
     type: String
@@ -28,7 +27,6 @@ const restaurantSchema = new mongoose.Schema({
   },
   rating: {
     type: String,
-    required: true
   },
   description: {
     type: String

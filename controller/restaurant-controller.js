@@ -10,13 +10,11 @@ const restController = {
 
     const type = {
       NAME: 'string',
-      CATEGORY: 'string',
       LOCATION: 'string',
-      PHONE: 'number',
-      RATING: 'number'
+      PHONE: 'number'
     }
 
-    if (typeof name === type.NAME && typeof category === type.CATEGORY && typeof location === type.LOCATION && typeof Number(phone) === type.PHONE && typeof Number(rating) === type.RATING) {
+    if (typeof name === type.NAME && typeof location === type.LOCATION && typeof Number(phone) === type.PHONE) {
       Restaurant.create(req.body)
         .then(() => res.redirect('/'))
         .catch(error => console.log(error))
@@ -61,7 +59,7 @@ const restController = {
       PHONE: 'number',
       RATING: 'number'
     }
-    if (typeof name === type.NAME && typeof category === type.CATEGORY && typeof location === type.LOCATION && typeof Number(phone) === type.PHONE && typeof Number(rating) === type.RATING) {
+    if (typeof name === type.NAME && typeof location === type.LOCATION && typeof Number(phone) === type.PHONE) {
       Restaurant.findByIdAndUpdate(id, req.body)
         .then(() => res.redirect(`/restaurants/${id}`))
         .catch(error => console.log(error))

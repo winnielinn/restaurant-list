@@ -10,9 +10,9 @@
     value="{{ restaurant.name_en }}">
 </div>
 <div class="col-12 mt-3">
-  <label for="restaurant-category"><span style="color: #e83e8c;">*</span> 類型 <i class="fas fa-filter"></i></label>
+  <label for="restaurant-category"> 類型 <i class="fas fa-filter"></i></label>
   <input list="categories" class="form-control" name="category" id="restaurant-category" placeholder="美式"
-    value="{{ restaurant.category }}" required>
+    value="{{ restaurant.category }}">
   <datalist id="categories">
     <option>日本料理</option>
     <option>中東料理</option>
@@ -55,11 +55,8 @@
     value="{{ restaurant.google_map }}">
 </div>
 <div class="col-12 mt-3">
-  <label for="restaurant-rating" class="form-label"><span style="color: #e83e8c;">*</span> 評分 <i
+  <label for="restaurant-rating" class="form-label"> 評分 <i
       class="far fa-star"></i></label>
   <input type="text" class="form-control" id="restaurant-rating" placeholder="0 ~ 5" name="rating"
-    value="{{ restaurant.rating }}" required>
-  <div class="invalid-feedback">
-    Please input number from 1 to 5.
-  </div>
+    value="{{ restaurant.rating }}">
 </div>
