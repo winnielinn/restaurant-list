@@ -3,68 +3,7 @@
 <div class="container">
   <div class="row m-5">
     <form class="container-fluid needs-validation" action="/restaurants" method="POST" id="form" novalidate>
-      <div class="col-12">
-        <label for="restaurant-name" class="form-label"><span style="color: #e83e8c;">*</span>店名 <i
-            class="fas fa-utensils"></i></label>
-        <input type="text" class="form-control" id="restaurant-name" placeholder="艾朋牛排餐酒館" name="name" required>
-      </div>
-      <div class="col-12 mt-3">
-        <label for="restaurant-name_en" class="form-label">英文店名 <i class="fas fa-file-signature"></i></label>
-        <input type="text" class="form-control" id="restaurant-name_en" placeholder="A Point Steak & Bar"
-          name="name_en">
-      </div>
-      <div class="col-12 mt-3">
-        <label for="restaurant-category"><span style="color: #e83e8c;">*</span>類型 <i class="fas fa-filter"></i></label>
-        <input list="categories" class="form-control" name="category" id="restaurant-category" placeholder="美式"
-          required>
-        <datalist id="categories">
-          <option>日本料理</option>
-          <option>中東料理</option>
-          <option>義式餐廳</option>
-          <option>美式</option>
-          <option>酒吧</option>
-          <option>咖啡</option>
-        </datalist>
-      </div>
-      <div class="col-12 mt-3">
-        <label for="restaurant-location" class="form-label"><span style="color: #e83e8c;">*</span> 地址 <i
-            class="fas fa-map-marker-alt pr-2"></i></label>
-        <input type="text" class="form-control" id="restaurant-location" placeholder="台北市信義區忠孝東路五段 139 號 2 樓"
-          name="location" required>
-      </div>
-      <div class="col-12 mt-3">
-        <label for="restaurant-phone" class="form-label"><span style="color: #e83e8c;">*</span> 電話 <i
-            class="fas fa-mobile-alt pr-2"></i></label>
-        <input type="number" class="form-control" id="restaurant-phone" placeholder="02 2756 7788" name="phone"
-          inputmode="numeric" required>
-        <div class="invalid-feedback">
-          Please only input number.
-        </div>
-      </div>
-      <div class="col-12 mt-3">
-        <label for="restaurant-description" class="form-label" rows="3" cols="20">更多資訊 <i
-            class="fas fa-info-circle"></i></label>
-        <textarea itype="text" class="form-control" id="restaurant-description" placeholder="餐廳介紹..."
-          name="description"></textarea>
-      </div>
-      <div class="col-12 mt-3">
-        <label for="restaurant-image" class="form-label">照片 <i class="far fa-image"></i></label>
-        <input type="text" class="form-control" id="restaurant-image" placeholder="https://" name="image">
-      </div>
-      <div class="col-12 mt-3">
-        <label for="restaurant-google_map" class="form-label">Google Map <i
-            class="fas fa-location-arrow pr-2 fa-xs"></i></label>
-        <input type="text" class="form-control" id="restaurant-google_map" placeholder="https://" name="google_map">
-      </div>
-      <div class="col-12 mt-3">
-        <label for="restaurant-rating" class="form-label"><span style="color: #e83e8c;">*</span> 評分 <i
-            class="far fa-star"></i></label>
-        <input type="number" step="0.1" min="0" max="5" class="form-control" id="restaurant-rating" placeholder="0 ~ 5"
-          name="rating" inputmode="numeric" required>
-        <div class="invalid-feedback">
-          Please input number from 1 to 5.
-        </div>
-      </div>
+     {{> restaurant-form}}
       <div class="col-12 mt-5">
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
           <button type="submit" class="btn btn-outline-primary mr-2">新建</button>
