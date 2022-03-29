@@ -1,19 +1,6 @@
 const express = require('express')
 const Restaurant = require('../../models/Restaurant')
-const sortFilter = require('../../sort_filter')
 const router = express.Router()
-
-router.get('/', (req, res) => {
-  const sort = req.query.sort
-  const userId = req.user._id
-  const filter = sortFilter(sort)
-
-  Restaurant.find({ userId })
-    .lean()
-    .sort(filter)
-    .then(restaurant => res.render('index', { restaurant, sort }))
-    .catch(error => console.log(error))
-})
 
 router.get('/search', (req, res) => {
   const userId = req.user._id

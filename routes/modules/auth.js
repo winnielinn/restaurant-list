@@ -6,7 +6,7 @@ const router = express.Router()
 router.get('/facebook', passport.authenticate('facebook', { scope: ['email', 'public_profile'] }))
 
 router.get('/facebook/callback', passport.authenticate('facebook', {
-  successRedirect: '/',
+  successRedirect: '/restaurants',
   failureRedirect: '/users/login',
 }))
 
@@ -14,7 +14,7 @@ router.get('/facebook/callback', passport.authenticate('facebook', {
 router.get('/google', passport.authenticate('google', { scope: ['email', 'profile'] }))
 
 router.get('/google/callback', passport.authenticate('google', {
-  successRedirect: '/',
+  successRedirect: '/restaurants',
   failureRedirect: '/users/login',
 }))
 

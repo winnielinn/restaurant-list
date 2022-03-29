@@ -8,7 +8,7 @@ router.get('/login', userController.logInPage)
 
 // authenticate requests
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/',
+  successRedirect: '/restaurants',
   failureRedirect: '/users/login',
   failureMessage: true,
   failureFlash: true

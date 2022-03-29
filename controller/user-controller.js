@@ -51,7 +51,7 @@ const userController = {
             }))
             .then(user => {
               req.login(user, () => {
-                  res.redirect('/')
+                res.redirect('/restaurants')
               })
             })
         }
