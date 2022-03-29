@@ -49,10 +49,14 @@ const userController = {
               email,
               password: hash
             }))
-            .then(() => res.redirect('/'))
-            .catch(err => console.log(err))
+            .then(user => {
+              req.login(user, () => {
+                  res.redirect('/')
+              })
+            })
         }
       })
+      .catch(err => console.log(err))
   },
   logOut: (req, res) => {
     req.logout()
