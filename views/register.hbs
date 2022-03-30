@@ -4,22 +4,22 @@
       <div class="card card-body login-card">
         <h1 class="text-center mt-3">Register</h1>
         {{> message}}
-        <form action="/users/register" class="needs-validation" method="POST" novalidate>
+        <form action="/users/register" class="needs-validation" method="POST">
           <div class="form-group mt-3">
             <label for="name">Name</label>
-            <input type="name" id="name" name="name" class="form-control" placeholder="Enter name" value="{{name}}" required>
+            <input type="name" id="name" name="name" class="form-control" placeholder="Enter name" value="{{name}}">
           </div>
           <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email" value="{{email}}" required>
+            <label for="email"><span style="color: #e83e8c;">*</span> Email</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email" value="{{email}}">
           </div>
           <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" value="{{password}}" required>
+            <label for="password"><span style="color: #e83e8c;">*</span> Password</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" value="{{password}}">
           </div>
           <div class="form-group">
-            <label for="confirmPassword">Confirm Password</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Confirm Password" value="{{confirmPassword}}" required>
+            <label for="confirmPassword"><span style="color: #e83e8c;">*</span> Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Confirm Password" value="{{confirmPassword}}">
           </div>
           <button type="submit" class="btn mt-4 btn-block"
             style="background-color: #9b4b4b; color: white;">Submit</button>

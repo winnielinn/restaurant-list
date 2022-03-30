@@ -12,8 +12,8 @@ const userController = {
     const { name, email, password, confirmPassword } = req.body
     const errors = []
 
-    if (!name || !email || !password || !confirmPassword) {
-      errors.push({ message: 'All items are required' })
+    if (!email || !password || !confirmPassword) {
+      errors.push({ message: 'Email & Password are required' })
     }
 
     if (password !== confirmPassword) {

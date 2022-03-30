@@ -1,6 +1,9 @@
 const express = require('express')
 const Restaurant = require('../../models/Restaurant')
+const restController = require('../../controller/restaurant-controller')
 const router = express.Router()
+
+router.get('/', restController.getRestaurants)
 
 router.get('/search', (req, res) => {
   const userId = req.user._id
